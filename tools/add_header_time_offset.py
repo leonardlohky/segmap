@@ -67,6 +67,6 @@ if __name__ == "__main__":
   args = parser.parse_args()
   try:
     add_offset(args.i, args.o, args.t, args.u)
-  except Exception, e:
+  except Exception as e:
     import traceback
 traceback.print_exc()

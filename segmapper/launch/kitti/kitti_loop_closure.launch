@@ -12,16 +12,24 @@
   <arg name="rviz_config_file" value="$(env HOME)/.segmap/kitti/kitti_loop_closure.rviz"/>
 
   <!-- ROS parameters -->
-  <rosparam>use_sim_time: true</rosparam>
+  <rosparam>use_sim_time: false</rosparam>
 
   <rosparam command="load" file="$(find segmapper)/launch/kitti/kitti_loop_closure.yaml"/>
   
-
   <!-- rviz node -->
   <node name="visualizer" pkg="rviz" type="rviz" output="screen" respawn="$(arg respawn_value)" args="-d $(arg rviz_config_file)" />
   
   <!-- rosbag player node -->
   <node name="player" pkg="rosbag" type="play" output="screen" args=" -r 1 -s 0 --clock --pause $(arg bag_file)"/>
+
+  <node pkg="octomap_world" type="octomap_manager" name="octomap_manager" output="screen">         
+    <param name="tf_frame"  type="string" value="world"/>  
+    <remap from="pointcloud"     to="/velodyne_points"/>      
+    <param name="map_publish_frequency"  type="double" value="5.0"/>     
+    <param name="resolution"  type="double" value="0.5"/>   
+    <param name="sensor_max_range" type="double" value="20.0"/>      
+    <param name="ignore_timestamp_mismatch" type="bool" value="true"/>    
+  </node> 
 
     <!-- segmapper node -->
   <include file="$(find segmapper)/launch/segmapper.launch">
