@@ -52,7 +52,8 @@
     <param name="sensor_max_range" type="double" value="20.0"/>   
     <param name="ignore_timestamp_mismatch" type="bool" value="true"/>         
   </node> 
-  <!-- octomap mapper node for Robot 4-->
+  
+  <!-- octomap mapper node for Robot 2-->
   <node pkg="octomap_world" type="octomap_manager" name="octomap_manager2" output="screen">         
     <param name="tf_frame"  type="string" value="na1/world"/>  
     <remap from="pointcloud"     to="/na1/velodyne_points"/>      
@@ -62,7 +63,7 @@
     <param name="ignore_timestamp_mismatch" type="bool" value="true"/>         
   </node> 
 
-  <!-- octomap mapper node for Robot 4-->
+  <!-- octomap mapper node for Robot 3-->
   <node pkg="octomap_world" type="octomap_manager" name="octomap_manager3" output="screen">         
     <param name="tf_frame"  type="string" value="na2/world"/>  
     <remap from="pointcloud"     to="/na2/velodyne_points"/>      

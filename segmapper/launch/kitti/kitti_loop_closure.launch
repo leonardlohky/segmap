@@ -23,8 +23,8 @@
   <node name="player" pkg="rosbag" type="play" output="screen" args=" -r 1 -s 0 --clock --pause $(arg bag_file)"/>
 
   <node pkg="octomap_world" type="octomap_manager" name="octomap_manager" output="screen">         
-    <param name="tf_frame"  type="string" value="world"/>  
-    <remap from="pointcloud"     to="/velodyne_points"/>      
+    <param name="tf_frame"  type="string" value="map"/>  
+    <remap from="pointcloud"     to="/segmapper/local_map"/>      
     <param name="map_publish_frequency"  type="double" value="5.0"/>     
     <param name="resolution"  type="double" value="0.5"/>   
     <param name="sensor_max_range" type="double" value="20.0"/>      
